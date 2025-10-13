@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌬️ Air Quality Prediction</h1>
+        <p class="description">Enter the meteorological parameters to predict air quality index</p>
+        
+        <form action="/predict" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="T">Temperature (°C)</label>
+                    <input type="number" id="T" name="T" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="TM">Maximum Temperature (°C)</label>
+                    <input type="number" id="TM" name="TM" step="0.1" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Tm">Minimum Temperature (°C)</label>
+                    <input type="number" id="Tm" name="Tm" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="SLP">Sea Level Pressure (hPa)</label>
+                    <input type="number" id="SLP" name="SLP" step="0.1" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="H">Humidity (%)</label>
+                    <input type="number" id="H" name="H" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="VV">Visibility (km)</label>
+                    <input type="number" id="VV" name="VV" step="0.1" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="V">Wind Speed (km/h)</label>
+                    <input type="number" id="V" name="V" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="VM">Maximum Wind Speed (km/h)</label>
+                    <input type="number" id="VM" name="VM" step="0.1" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Predict Air Quality</button>
+        </form>
+    </div>
+</body>
+</html>
